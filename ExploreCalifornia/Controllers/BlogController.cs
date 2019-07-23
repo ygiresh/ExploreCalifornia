@@ -27,5 +27,19 @@ namespace ExploreCalifornia.Controllers
 
             return View(post);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Post post)
+        {
+            post.Author = User.Identity.Name;
+            post.Posted = DateTime.Now;
+            return View(post);
+        }
     }
 }

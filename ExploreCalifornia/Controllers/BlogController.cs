@@ -10,13 +10,13 @@ namespace ExploreCalifornia.Controllers
     {
         public IActionResult Index()
         {
-            return new ContentResult { Content = "Blog posts" };
+            return View();
         }
 
         [Route("blog/{year:int?}/{month:int?}/{key}")]
         public IActionResult Post(int year, int month, string key)
         {
-            return new ContentResult { Content = string.Format("Year: {0}; Month: {1}; Key: {2}", year, month, key) };
+            return View();
         }
     }
 }

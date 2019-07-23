@@ -56,10 +56,15 @@
     </nav>
   </header>
   <section id="actionCall">
- @RenderSection("header");
+      @if (IsSectionDefined("header"))
+      {
+         @RenderSection("header", false);
+      }
   </section>
   <div id="contentWrapper">
-@RenderBody()
+      <section id="mainContent">
+          @RenderBody()
+      </section>
     <aside id="secondaryContent">
         <div id="specials" class="callOut">
             <h1>Monthly Specials</h1>

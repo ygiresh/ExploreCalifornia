@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ExploreCalifornia.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExploreCalifornia.Controllers
 {
+ 
     public class BlogController : Controller
     {
         private readonly BlogDataContext _db;
@@ -47,12 +49,14 @@ namespace ExploreCalifornia.Controllers
             return View(post);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(Post post)
         {

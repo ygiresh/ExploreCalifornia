@@ -17,20 +17,14 @@ namespace ExploreCalifornia.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var posts = _db.Posts.OrderByDescending(x => x.Posted).Take(5).ToArray();
+            return View(posts);
         }
 
         [Route("blog/{year:int?}/{month:int?}/{key}")]
         public IActionResult Post(int year, int month, string key)
         {
-            var post = new Post
-            {
-                Title = "My Blog Post",
-                Posted = DateTime.Now,
-                Author = "G",
-                Body = " Test Test Test Test Test Test Test"
-            };
-
+            var post = _db.Posts.FirstOrDefault(x => x.Key == key);
             return View(post);
         }
 
